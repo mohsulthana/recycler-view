@@ -2,6 +2,7 @@ package com.kebkel.myrecyclerview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,9 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private void setMode(int itemId) {
         switch (itemId) {
             case R.id.action_list:
+                showRecyclerList();
                 break;
 
             case R.id.action_grid:
+                showRecyclerGrid();
                 break;
 
             case R.id.action_cardview:
@@ -56,5 +59,11 @@ public class MainActivity extends AppCompatActivity {
         rvHeroes.setLayoutManager(new LinearLayoutManager(this));
         ListHeroAdapter listHeroAdapter = new ListHeroAdapter(list);
         rvHeroes.setAdapter(listHeroAdapter);
+    }
+
+    private void showRecyclerGrid() {
+        rvHeroes.setLayoutManager(new GridLayoutManager(this, 2));
+        GridHeroAdapter gridHeroAdapter = new GridHeroAdapter(list);
+        rvHeroes.setAdapter(gridHeroAdapter);
     }
 }
